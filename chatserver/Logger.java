@@ -5,6 +5,7 @@ import chatserver.*;
 import java.io.*;
 import java.util.Date;
 import java.text.*;
+import static chatserver.LogLevels.*;
 
 import java.lang.management.RuntimeMXBean;
 import java.lang.management.ManagementFactory;
@@ -36,14 +37,14 @@ public class Logger {
 		String processInfo[] = rMXB.getName().split("@", 2);
 		processPID = Integer.parseInt(processInfo[0]);
 		String processHostname = processInfo[1];
-		consoleLog("info ", "------------------------------------------------------------------------------------------------");
-		consoleLog("info ", "------------------------------------------------------------------------------------------------");
-		consoleLog("info ", "\t* Running server process hostname: " + processHostname);
-		consoleLog("info ", "\t* Running server process ID: " + processPID);
-		consoleLog("info ", "\t* Running server Java Virtual Machine implementation name: " + rMXB.getVmName());
-		consoleLog("info ", "\t* Running server Java Virtual Machine specification version: " + rMXB.getSpecVersion());
-		consoleLog("info ", "------------------------------------------------------------------------------------------------");
-		consoleLog("info ", "------------------------------------------------------------------------------------------------");
+		consoleLog(LOG_LEVEL_INFO, "------------------------------------------------------------------------------------------------");
+		consoleLog(LOG_LEVEL_INFO, "------------------------------------------------------------------------------------------------");
+		consoleLog(LOG_LEVEL_INFO, "\t* Running server process hostname: " + processHostname);
+		consoleLog(LOG_LEVEL_INFO, "\t* Running server process ID: " + processPID);
+		consoleLog(LOG_LEVEL_INFO, "\t* Running server Java Virtual Machine implementation name: " + rMXB.getVmName());
+		consoleLog(LOG_LEVEL_INFO, "\t* Running server Java Virtual Machine specification version: " + rMXB.getSpecVersion());
+		consoleLog(LOG_LEVEL_INFO, "------------------------------------------------------------------------------------------------");
+		consoleLog(LOG_LEVEL_INFO, "------------------------------------------------------------------------------------------------");
 	}
 
 	/*

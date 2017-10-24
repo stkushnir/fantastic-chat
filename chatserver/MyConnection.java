@@ -4,6 +4,7 @@ package chatserver;
 import java.net.*;
 import java.io.*;
 import java.util.*;
+import static chatserver.LogLevels.*;
 
 /*
  * class [extends Thread] to cooperate with all connected clients
@@ -31,7 +32,7 @@ class MyConnection extends Thread {
 			in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			allConnected.put(clientCounter, clientSocket);
 		} catch (IOException ioExc) {
-			Logger.consoleLog("error", "MyConnection constructor: " + ioExc.toString() + ". Exiting");
+			Logger.consoleLog(LOG_LEVEL_ERROR, "MyConnection constructor: " + ioExc.toString() + ". Exiting");
 			System.exit(1);
 		}
 	}
@@ -59,7 +60,7 @@ class MyConnection extends Thread {
 			 * FIXME each client from [i+1;M] set would not recieve a message
 			 */
 			allConnected.remove(currentKey);
-			Logger.consoleLog("warn", "One of the clients already disconnected: " + ex);
+			Logger.consoleLog(LOG_LEVEL_WARN, "One of the clients already disconnected: " + ex);
 			// FIXME LEFT2 shit-message appeares in GUI, might be not-server bug
 			sendMessageConnectedClients("\0LEFT\0" + currentKey);
 		}
@@ -79,7 +80,7 @@ class MyConnection extends Thread {
 				char charReceived = (char) intReceived;
 				switch (charReceived) {
 					case '\n': //TODO decide what delimiter to use??
-						Logger.consoleLog("info", "Received message --> " + sendTextMessage);
+						Logger.consoleLog(LOG_LEVEL_INFO, "Received message --> " + sendTextMessage);
 						sendMessageConnectedClients(sendTextMessage);
 						sendTextMessage = "";
 						break;
@@ -88,7 +89,7 @@ class MyConnection extends Thread {
 				}
 			}
 		} catch (IOException ioExc) {
-			Logger.consoleLog("error", "MyConnection.run() method: " + ioExc.toString() + ". Exiting");
+			Logger.consoleLog(LOG_LEVEL_ERROR, "MyConnection.run() method: " + ioExc.toString() + ". Exiting");
 			System.exit(1);
 		}
 	}
