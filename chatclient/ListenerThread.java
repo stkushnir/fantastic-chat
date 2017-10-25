@@ -1,15 +1,17 @@
 
 package chatclient;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.text.*;
-
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import java.text.*;
+import java.awt.Color;
+import java.io.InputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JTextPane;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
 
 /*
  * class [extends ChatCli] is meant to listen to server while client works and show the new info in GUI
