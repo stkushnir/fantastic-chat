@@ -1,15 +1,21 @@
 
 package chatclient;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.text.*;
-
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import java.text.*;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.InputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.text.DefaultCaret;
+import javax.swing.text.DefaultStyledDocument;
 
 /*
  * used to initiate GUI-based client with send message functionality

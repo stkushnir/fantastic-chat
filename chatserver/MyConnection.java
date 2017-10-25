@@ -1,9 +1,15 @@
 
 package chatserver;
 
-import java.net.*;
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.SocketException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import static chatserver.LogLevels.*;
 
 /*
@@ -31,8 +37,8 @@ class MyConnection extends Thread {
 		try {
 			in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			allConnected.put(clientCounter, clientSocket);
-		} catch (IOException ioExc) {
-			Logger.consoleLog(LOG_LEVEL_ERROR, "MyConnection constructor: " + ioExc.toString() + ". Exiting");
+		} catch (IOException ioe) {
+			Logger.consoleLog(LOG_LEVEL_ERROR, "MyConnection constructor: " + ioe.toString() + ". Exiting");
 			System.exit(1);
 		}
 	}
@@ -52,7 +58,7 @@ class MyConnection extends Thread {
 				out = recipient.getValue().getOutputStream();
 				out.write(sendTextMessage.getBytes());
 			}
-		} catch (java.net.SocketException ex) {
+		} catch (SocketException e) {
 			/*
 			 * broken pipe exception is being catched when server tries to
 			 * write to a connection when the other end has already closed it
@@ -60,7 +66,7 @@ class MyConnection extends Thread {
 			 * FIXME each client from [i+1;M] set would not recieve a message
 			 */
 			allConnected.remove(currentKey);
-			Logger.consoleLog(LOG_LEVEL_WARN, "One of the clients already disconnected: " + ex);
+			Logger.consoleLog(LOG_LEVEL_WARN, "One of the clients already disconnected: " + e);
 			// FIXME LEFT2 shit-message appeares in GUI, might be not-server bug
 			sendMessageConnectedClients("\0LEFT\0" + currentKey);
 		}

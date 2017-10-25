@@ -1,9 +1,9 @@
 
 package chatserver;
 
-import java.net.*;
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import static chatserver.LogLevels.*;
 
 /*
