@@ -1,14 +1,11 @@
 
 package chatserver;
 
-import chatserver.*;
-import java.io.*;
 import java.util.Date;
-import java.text.*;
-import static chatserver.LogLevels.*;
-
+import java.text.SimpleDateFormat;
 import java.lang.management.RuntimeMXBean;
 import java.lang.management.ManagementFactory;
+import static chatserver.LogLevels.*;
 
 /*
  * class contains set of methods used for server logging
