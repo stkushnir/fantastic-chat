@@ -27,6 +27,9 @@ public class ChatCli extends JFrame implements ActionListener {
 
 	private static final int SERVER_PORT = 41991;
 	private static final String DEFAULT_ENCODING = "UTF-8";
+	private static final int DEFAULT_UI_FRAME_HEIGHT = 900;
+	private static final int DEFAULT_UI_FRAME_WIDTH = 600;
+
 
 	public static String nickName;
 	static DefaultStyledDocument doc;
@@ -45,7 +48,7 @@ public class ChatCli extends JFrame implements ActionListener {
 		// code below makes stable JTextPane (where all messages are being shown)
 		// code below makes editable JTextField (where message is being typed)
 
-		setSize(900, 600);
+		setSize(DEFAULT_UI_FRAME_HEIGHT, DEFAULT_UI_FRAME_WIDTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		messageHistory = new JTextPane(doc);
 		messageHistory.setEditable(false);
